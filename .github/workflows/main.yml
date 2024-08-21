@@ -1,0 +1,25 @@
+name: Run Crawler
+
+on:
+  schedule:
+    - cron: '0 23 * * *'  # 每隔兩天早上八點執行
+  workflow_dispatch:
+  
+  env:
+    yzu_crawler: ${{ secrets.YZU_CRAWLER }}
+
+jobs:
+  run-crawler:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11.8'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run crawler
+        run: python 元智官網爬蟲.py
