@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-YZU_CRAWLER = os.environ['YZU_CRAWLER']
+yzu_crawler = os.environ['YZU_CRAWLER']
 
 url = 'https://www.yzu.edu.tw/index.php/tw'
 url_page = url[:url.find('/', url.find('//') + 2)]
